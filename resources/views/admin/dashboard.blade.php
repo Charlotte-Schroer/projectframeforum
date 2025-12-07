@@ -32,7 +32,7 @@
 
                         <a href="{{ route('news.index') }}" class="block p-6 bg-yellow-50 dark:bg-yellow-900 rounded-lg hover:bg-yellow-100 dark:hover:bg-yellow-800 transition">
                             <h4 class="font-bold text-lg mb-2">👀 Preview News</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">Watch news items like users do</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">View news items like users do</p>
                         </a>
                     </div>
                 </div>
