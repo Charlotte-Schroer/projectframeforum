@@ -16,8 +16,12 @@ Route::get('/', function () {
 });
 
 // Dashboard (authenticated users)
+// Dashboard (authenticated users)
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    if (auth()->user()->is_admin) {
+        return redirect()->route('admin.dashboard');
+    }
+    return redirect()->route('profile.show', auth()->user()->username);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Public routes
@@ -28,7 +32,7 @@ Route::get('/contact', [ContactMessageController::class, 'create'])->name('conta
 Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');
 
 // Public profiles
-Route::get('/profile/{user:username}', [ProfileController::class, 'show'])->name('profile.show');
+Route::get('/profile/{username}', [ProfileController::class, 'show'])->name('profile.show');
 
 // Forum - public
 Route::get('/forum', [TopicController::class, 'index'])->name('forum.index');
@@ -36,14 +40,14 @@ Route::get('/forum/{topic}', [TopicController::class, 'show'])->name('forum.show
 
 // Authenticated routes
 Route::middleware('auth')->group(function () {
-Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-// Forum - authenticated
-Route::get('/forum/create', [TopicController::class, 'create'])->name('forum.create');
-Route::post('/forum', [TopicController::class, 'store'])->name('forum.store');
-Route::post('/forum/{topic}/posts', [PostController::class, 'store'])->name('posts.store');
+    // Forum - authenticated
+    Route::get('/forum/create', [TopicController::class, 'create'])->name('forum.create');
+    Route::post('/forum', [TopicController::class, 'store'])->name('forum.store');
+    Route::post('/forum/{topic}/posts', [PostController::class, 'store'])->name('posts.store');
 });
 
 // Admin routes
@@ -53,7 +57,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         return view('admin.dashboard');
     })->name('dashboard');
 
-//Admin Management
+    //Admin Management
     Route::get('/news', [NewsController::class, 'adminIndex'])->name('news.index');
     Route::get('/news/create', [NewsController::class, 'create'])->name('news.create');
     Route::post('/news', [NewsController::class, 'store'])->name('news.store');
@@ -69,4 +73,4 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::delete('/contact-messages/{contactMessage}', [ContactMessageController::class, 'destroy'])->name('contact.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
