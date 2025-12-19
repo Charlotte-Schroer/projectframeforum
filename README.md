@@ -1,59 +1,149 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+# FrameForum 🎬
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Een filmforum website waar gebruikers kunnen discussiëren over films, nieuws kunnen lezen en vragen kunnen stellen.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Over dit project
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+FrameForum is mijn project voor Backend Web. Het idee voor dit concrete onderwerp is een gevolg van de opdracht zelf. De website combineert een nieuwssectie met een interactief forum.
 
-## Learning Laravel
+## Wat kan je ermee?
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+**Voor iedereen:**
+- Filmnieuws lezen
+- Forum topics bekijken
+- FAQ raadplegen
+- Gebruikersprofielen bekijken
+- Contactformulier gebruiken
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**Voor geregistreerde gebruikers:**
+- Je eigen profiel aanmaken en personaliseren
+- Forum topics starten
+- Reageren op discussies
+- Profielfoto uploaden
 
-## Laravel Sponsors
+**Voor admins:**
+- Nieuwtjes publiceren en beheren
+- FAQ items toevoegen
+- Contact berichten bekijken
+- Gebruikers admin rechten geven
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Installeren
 
-### Premium Partners
+### Je hebt nodig:
+- PHP 8.1+
+- MySQL
+- Composer
+- Node.js
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Setup:
 
-## Contributing
+```bash
+# Installeer alles
+composer install
+npm install
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Maak je .env bestand
+cp .env.example .env
+php artisan key:generate
 
-## Code of Conduct
+# Vul je database gegevens in .env in
+# DB_DATABASE=frameforum
+# DB_USERNAME=root
+# DB_PASSWORD=
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# Database opzetten
+php artisan migrate:fresh --seed
 
-## Security Vulnerabilities
+# CSS builden
+npm run build
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Starten
+php artisan serve
+```
 
-## License
+Surf naar `http://localhost:8000`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Inloggen
+
+Na de installatie kan je inloggen met:
+- Email: `admin@ehb.be`
+- Wachtwoord: `Password!321`
+
+## Tech stack
+
+- Laravel 12.40.1
+- MySQL database
+- Tailwind CSS voor styling
+- Laravel Breeze voor authenticatie
+- Alpine.js voor interactiviteit
+
+## Database opbouw
+
+![img.png](docs/img.png)
+
+De belangrijkste tabellen:
+- Users met admin functionaliteit
+- News voor artikelen
+- Topics en Posts voor het forum
+- Tags voor filmgenres (many-to-many met topics)
+- FAQ Categories en Items
+- Contact Messages
+
+## Features checklist
+
+**Verplichte onderdelen:**
+- [x] Login/registratie systeem
+- [x] Admin en user rollen
+- [x] Profielpagina's
+- [x] Nieuws CRUD
+- [x] FAQ pagina
+- [x] Contact formulier met email
+
+**Extra's:**
+- [x] Forum met topics en replies
+- [x] Tags systeem
+- [x] Dark mode
+- [ ] Admin dashboard (work in progress)
+
+## Problemen die ik tegenkwam
+
+
+
+## Credits & Bronvermelding
+
+### Ontwikkeling
+
+**Student:** Charlotte Schröer  
+**Academiejaar:** 2025-2026
+**Vak:** Backend Web
+
+### Documentatie
+
+- [Laravel Documentation](https://laravel.com/docs) - Framework documentatie & Blade templating
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs) - Styling
+- Cursusmateriaal Backend Web - EHB
+
+### Hulpmiddelen
+
+- ChatGPT: 
+  - Creatie NewsSeeder.php
+  - Ontwerp logo FrameForum
+- Claude AI:
+  - Code suggesties
+  - Debugging ondersteuning
+
+
+## To-do
+
+Als ik meer tijd had zou ik nog graag toevoegen:
+- 
+
+
+
+
+
+---
+
+Gemaakt als schoolproject voor Erasmushogeschool Brussel
