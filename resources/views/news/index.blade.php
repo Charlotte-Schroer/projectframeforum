@@ -30,12 +30,13 @@
                 <!-- News Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                     @foreach($news as $item)
-                        <article class="bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-200">
+                        <article
+                            class="bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-200">
                             <!-- Image -->
-                            <a href="{{ route('news.show', $item) }}" class="block aspect-video overflow-hidden bg-gray-200 dark:bg-gray-700">
-                                <img src="{{ asset('storage/' . $item->image) }}"
-                                     alt="{{ $item->title }}"
-                                     class="w-full h-full object-cover hover:scale-105 transition-transform duration-200">
+                            <a href="{{ route('news.show', $item) }}"
+                                class="block aspect-video overflow-hidden bg-gray-200 dark:bg-gray-700">
+                                <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}"
+                                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-200">
                             </a>
 
                             <!-- Content -->
@@ -43,7 +44,9 @@
                                 <!-- Date & Author -->
                                 <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-3">
                                     <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                        </path>
                                     </svg>
                                     <time datetime="{{ $item->publication_date->format('Y-m-d') }}">
                                         {{ $item->publication_date->format('d M Y') }}
@@ -54,7 +57,8 @@
 
                                 <!-- Title -->
                                 <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">
-                                    <a href="{{ route('news.show', $item) }}" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+                                    <a href="{{ route('news.show', $item) }}"
+                                        class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
                                         {{ $item->title }}
                                     </a>
                                 </h2>
@@ -66,10 +70,11 @@
 
                                 <!-- Read More -->
                                 <a href="{{ route('news.show', $item) }}"
-                                   class="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium">
+                                    class="inline-flex items-center text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 font-medium">
                                     Read more
                                     <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                        </path>
                                     </svg>
                                 </a>
                             </div>

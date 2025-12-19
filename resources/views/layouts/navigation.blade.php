@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ url('/') }}" class="flex items-center">
-                        <span class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">🎬 FrameForum</span>
+                        <span class="text-2xl font-bold text-emerald-600 dark:text-emerald-400">🎬 FrameForum</span>
                     </a>
                 </div>
 
@@ -113,7 +113,7 @@
                                 @csrf
 
                                 <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                                                        this.closest('form').submit();">
+                                                                this.closest('form').submit();">
                                     {{ __('Log out') }}
                                 </x-dropdown-link>
                             </form>
@@ -122,11 +122,11 @@
                 @else
                     <!-- Login/Register Links for Guests -->
                     <a href="{{ route('login') }}"
-                        class="text-sm text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">
+                        class="text-sm text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400">
                         Login
                     </a>
                     <a href="{{ route('register') }}"
-                        class="text-sm bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition">
+                        class="text-sm bg-emerald-600 text-white px-4 py-2 rounded-md hover:bg-emerald-700 transition">
                         Register
                     </a>
                 @endauth
@@ -202,7 +202,7 @@
                         @csrf
 
                         <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                                        this.closest('form').submit();">
                             {{ __('Log out') }}
                         </x-responsive-nav-link>
                     </form>
