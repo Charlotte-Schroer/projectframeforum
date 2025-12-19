@@ -30,7 +30,7 @@ class NewsSeeder extends Seeder
                 'user_id' => 1,
                 'title' => 'Beloved Director Announces Sequel to Cult Classic',
                 'content' => 'Fans are thrilled as the director officially confirmed that a sequel to the cult classic is in development, promising a deeper story and returning cast members.',
-                'image' => 'news/cult-classic.jpg',
+                'image' => 'news/cult-classic.png',
                 'publication_date' => '2025-01-12',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
