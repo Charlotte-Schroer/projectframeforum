@@ -21,7 +21,7 @@ Route::get('/dashboard', function () {
     if (auth()->user()->is_admin) {
         return redirect()->route('admin.dashboard');
     }
-    return redirect()->route('profile.show', auth()->user()->username);
+    return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Public routes

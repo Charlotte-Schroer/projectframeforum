@@ -17,21 +17,32 @@
         @csrf
         @method('patch')
 
+        <!-- Photo Preview -->
+        <div id="photoPreview" class="mt-4 hidden">
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Preview:</p>
+            <img id="preview" src="" alt="Preview"
+                class="w-32 h-32 rounded-full object-cover border-2 border-indigo-500">
+        </div>
+
         <!-- Profile Photo -->
         <div>
             <x-input-label for="profile_photo" :value="__('Profile Photo')" />
             <div class="mt-2 flex items-center gap-4">
-                @if($user->profile_photo_path)
-                    <img src="{{ asset('storage/' . $user->profile_photo_path) }}" alt="{{ $user->username }}" class="w-16 h-16 rounded-full object-cover">
+                @if($user->profile_photo)
+                    <img src="{{ asset('storage/' . $user->profile_photo) }}" alt="{{ $user->username }}"
+                        class="w-16 h-16 rounded-full object-cover">
                 @endif
-                <input id="profile_photo" name="profile_photo" type="file" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100" accept="image/*" />
+                <input id="profile_photo" name="profile_photo" type="file"
+                    class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
+                    accept="image/*" />
             </div>
             <x-input-error class="mt-2" :messages="$errors->get('profile_photo')" />
         </div>
 
         <div>
             <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
+            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)"
+                required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
@@ -47,12 +58,13 @@
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
-            @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
+            @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
                 <div>
                     <p class="text-sm mt-2 text-gray-800">
                         {{ __('Your email address is unverified.') }}
 
-                        <button form="send-verification" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <button form="send-verification"
+                            class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             {{ __('Click here to re-send the verification email.') }}
                         </button>
                     </p>
@@ -76,7 +88,9 @@
         <!-- About Me -->
         <div>
             <x-input-label for="about_me" :value="__('About Me')" />
-            <textarea id="about_me" name="about_me" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" rows="4">{{ old('about_me', $user->about_me) }}</textarea>
+            <textarea id="about_me" name="about_me"
+                class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                rows="4">{{ old('about_me', $user->about_me) }}</textarea>
             <x-input-error class="mt-2" :messages="$errors->get('about_me')" />
         </div>
 
@@ -84,14 +98,24 @@
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
             @if (session('status') === 'profile-updated' || session('success'))
-                <p
-                    x-data="{ show: true }"
-                    x-show="show"
-                    x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600"
-                >{{ __('Saved.') }}</p>
+                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
+                    class="text-sm text-gray-600">{{ __('Saved.') }}</p>
             @endif
         </div>
     </form>
+
+    <!-- Photo Preview Script -->
+    <script>
+        document.getElementById('profile_photo').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    document.getElementById('photoPreview').classList.remove('hidden');
+                    document.getElementById('preview').src = event.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 </section>
