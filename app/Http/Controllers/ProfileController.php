@@ -21,7 +21,9 @@ class ProfileController extends Controller
      */
     public function index(): View
     {
-        return view('profiles.index');
+        $users = User::paginate(12);
+
+        return view('profiles.index', compact('users'));
     }
 
     /**
@@ -87,12 +89,12 @@ class ProfileController extends Controller
         //Handle profile photo upload
         if ($request->hasFile('profile_photo')) {
             //Delete old profile photo if it exists
-            if ($user->profile_photo_path) {
-                Storage::delete($user->profile_photo_path);
+            if ($user->profile_photo) {
+                Storage::delete($user->profile_photo);
             }
 
             $path = $request->file('profile_photo')->store('profile-photos');
-            $user->profile_photo_path = $path;
+            $user->profile_photo = $path;
         }
 
         // Update user
@@ -124,8 +126,8 @@ class ProfileController extends Controller
         Auth::logout();
 
         // Delete profile photo if it exists
-        if ($user->profile_photo_path) {
-            Storage::delete($user->profile_photo_path);
+        if ($user->profile_photo) {
+            Storage::delete($user->profile_photo);
         }
 
         $user->delete();

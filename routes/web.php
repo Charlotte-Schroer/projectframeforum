@@ -32,7 +32,7 @@ Route::get('/contact', [ContactMessageController::class, 'create'])->name('conta
 Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');
 
 // Public profiles
-Route::get('/profiles', [ProfileController::class, 'index'])->name('profiles.index');
+Route::get('/profiles', [ProfileController::class, 'index'])->name('profile.index');
 Route::get('/profile/{username}', [ProfileController::class, 'show'])->name('profile.show');
 
 // Forum - public
