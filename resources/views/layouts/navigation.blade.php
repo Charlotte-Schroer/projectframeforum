@@ -26,7 +26,7 @@
                         {{ __('Forum') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('profiles.index')" :active="request()->routeIs('profiles.*')">
+                    <x-nav-link :href="route('profile.index')" :active="request()->routeIs('profile.index')">
                         {{ __('Profiles') }}
                     </x-nav-link>
 
@@ -117,7 +117,7 @@
                                 @csrf
 
                                 <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                                                                this.closest('form').submit();">
+                                                                    this.closest('form').submit();">
                                     {{ __('Log out') }}
                                 </x-dropdown-link>
                             </form>
@@ -206,7 +206,7 @@
                         @csrf
 
                         <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
-                                                        this.closest('form').submit();">
+                                                            this.closest('form').submit();">
                             {{ __('Log out') }}
                         </x-responsive-nav-link>
                     </form>
