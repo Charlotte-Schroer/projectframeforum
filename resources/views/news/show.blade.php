@@ -133,4 +133,4 @@
             @endif
         </div>
     </div>
-</x-app-layout>>
+</x-app-layout>
