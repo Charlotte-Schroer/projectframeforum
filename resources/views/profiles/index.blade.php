@@ -33,10 +33,10 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                     @foreach($users as $user)
                         <article
-                            class="bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-200">
+                            class="bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden hover:shadow-md dark:hover:bg-gray-700 transition-shadow duration-200">
                             <!-- Image -->
                             <a href="{{ route('profile.show', $user->username) }}"
-                                class="flex flex-col items-center p-6 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-200">
+                                class="flex flex-col items-center p-6 transition-colors duration-200">
                                 @if($user->profile_photo)
                                     <img src="{{ asset('storage/' . $user->profile_photo) }}" alt="{{ $user->username }}"
                                         class="w-32 h-32 rounded-full object-cover border-4 border-indigo-100 dark:border-indigo-900">
