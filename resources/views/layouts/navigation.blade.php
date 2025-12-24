@@ -26,6 +26,10 @@
                         {{ __('Forum') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('profiles.index')" :active="request()->routeIs('profiles.*')">
+                        {{ __('Profiles') }}
+                    </x-nav-link>
+
                     <x-nav-link :href="route('faq.index')" :active="request()->routeIs('faq.*')">
                         {{ __('FAQ') }}
                     </x-nav-link>

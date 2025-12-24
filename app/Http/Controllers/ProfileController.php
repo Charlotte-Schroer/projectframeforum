@@ -17,6 +17,14 @@ use Illuminate\View\View;
 class ProfileController extends Controller
 {
     /**
+     * Display the public 'searcher' or list profile viewer of a user
+     */
+    public function index(): View
+    {
+        return view('profiles.index');
+    }
+
+    /**
      * Display the public profile of a user.
      */
     public function show(string $username): View
