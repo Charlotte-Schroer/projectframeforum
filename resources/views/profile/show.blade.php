@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __($user->username. ' | Profile') }}
+            {{ __($user->username . ' | Profile') }}
         </h2>
     </x-slot>
 
@@ -53,7 +53,8 @@
                                                 d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
                                             </path>
                                         </svg>
-                                        <span>{{ $user->birthday->format('d F Y') }} ({{ $user->birthday->age }} jaar)</span>
+                                        <span>{{ $user->birthday->format('d F Y') }} ({{ $user->birthday->age }}
+                                            years old)</span>
                                     </div>
                                 @endif
 
@@ -165,7 +166,7 @@
                             No activity yet
                         </h3>
                         <p class="text-gray-600 dark:text-gray-400">
-                            {{ $user->username }} heeft nog geen nieuwtjes of forum posts gepubliceerd.
+                            {{ $user->username }} hasn't published anything yet.
                         </p>
                     </div>
                 @endif
@@ -174,4 +175,4 @@
     </div>
 
 
-</x-app-layout>>
+</x-app-layout>
