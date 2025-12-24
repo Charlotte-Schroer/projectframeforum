@@ -146,8 +146,10 @@ Tijdens het testen van de Light / Dark mode, kwam ik erachter dat de er ergens e
 Deze commits zijn gemaakt door de AI van Antigravity. Ik wou een andere layout en een Hero-section, hiervoor heb ik de AI gevraagd om het te implementeren. Antigravity slaat gesprekken en context lokaal op. Er is geen automatische exportfunctie. Daarom kan je hieronder de verschillende printscreens zien van de verschillende stappen. Onderstaande afbeeldingen geven weer hoe het geïmplementeerd is.
 ![AntigravityLayout_1](docs/AntigravityLayout_1.png)
 ![AntigravityLayout_2](docs/AntigravityLayout_2.png)
-- ***Flavicon:***
-Gebruik van [Flavicon Converter](https://favicon.io/favicon-converter/) om de favicon te genereren. How To: [Hoe ik het geïmplementeerd heb](https://codeboxr.com/how-to-create-and-integrate-a-favicon-in-your-laravel-project-and-wordpress-theme/)
+- ***Favicon:***
+Gebruik van [Favicon Converter](https://favicon.io/favicon-converter/) om de favicon te genereren. How To: [Hoe ik het geïmplementeerd heb](https://codeboxr.com/how-to-create-and-integrate-a-favicon-in-your-laravel-project-and-wordpress-theme/)
+- ***Stackoverflow:***
+De afbeeldingen die bij de NewsSeeder horen staan gelinkt in de directory `storage\public`. Ik wil deze beschikbaar maken met Seed en had hierbij hulp nodig om de commits hiervoor uit te voeren: [Stackoverflow](https://stackoverflow.com/questions/63485502/storage-folder-not-getting-commited-into-github-in-laravel-project)
 
 ### Leerproces
 
