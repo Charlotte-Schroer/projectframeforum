@@ -1,8 +1,10 @@
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __($news->title) }}
+        </h2>
+    </x-slot>
 
-@section('title', $news->title)
-
-@section('content')
     <div class="py-12">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Back Button -->
@@ -131,4 +133,4 @@
             @endif
         </div>
     </div>
-@endsection
+</x-app-layout>>

@@ -1,8 +1,10 @@
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __($user->username. ' | Profile') }}
+        </h2>
+    </x-slot>
 
-@section('title', $user->username . ' | Profile')
-
-@section('content')
     <div class="py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Profile Header -->
@@ -172,4 +174,4 @@
     </div>
 
 
-@endsection
+</x-app-layout>>

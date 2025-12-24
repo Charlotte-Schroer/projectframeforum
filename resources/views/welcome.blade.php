@@ -1,7 +1,9 @@
-@extends('layouts.app')
-@section('title', 'Welcome')
-
-@section('content')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('Welcome') }}
+        </h2>
+    </x-slot>
     <!-- Hero Section -->
     <div class="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-gray-900 dark:to-emerald-900 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,4 +35,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-app-layout>
