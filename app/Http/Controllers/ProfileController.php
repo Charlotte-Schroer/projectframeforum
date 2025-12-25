@@ -19,11 +19,22 @@ class ProfileController extends Controller
     /**
      * Display the public 'searcher' or list profile viewer of a user
      */
-    public function index(): View
+    public function index(Request $request): View
     {
-        $users = User::paginate(12);
+        $search = $request->input('search');
 
-        return view('profiles.index', compact('users'));
+        $users = User::when($search, function ($query, $search) {
+            $query->where(function($q)use($search){
+                $q->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('email', 'like', '%' . $search . '%')
+                    ->orWhere('username', 'like', '%' . $search . '%');
+            });
+        }, function ($query) {
+            $query->inRandomOrder();
+        })->paginate(12)
+            ->withQueryString();
+
+        return view('profiles.index', compact('users', 'search'));
     }
 
     /**

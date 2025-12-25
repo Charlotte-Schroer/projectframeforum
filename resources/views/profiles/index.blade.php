@@ -8,14 +8,31 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Header -->
-            <div class="mb-8">
+            <div class="mb-8 flex items-center justify-between gap-6">
+                <div>
                 <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-2">
                     Members
                 </h1>
                 <p class="text-gray-600 dark:text-gray-400">
                     Who are our members? Find here public profiles.
                 </p>
+                </div>
+                <form action="{{ route('profile.index') }}" method="get"
+                    class="flex items-center gap-4">
+                    <input
+                        type="text"
+                        name="search"
+                        placeholder="Search Member"
+                        value="{{ request('search') }}"
+                        class="border border-gray-300 text-gray-600 placeholder-gray-400
+                         rounded px-3 py-2
+                         focus:border-gray-400 focus:ring-gray-400"
+                    />
+                    <x-primary-button type="submit">
+                        Search</x-primary-button>
+                </form>
             </div>
+
 
             @if($users->isEmpty())
                 <!-- Empty State -->
