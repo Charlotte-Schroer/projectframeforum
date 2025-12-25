@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
 
     // Forum - authenticated
     Route::get('/forum/create', [TopicController::class, 'create'])->name('forum.create');
+    Route::get('/forum/{topic}/edit', [TopicController::class, 'edit'])->name('forum.edit');
     Route::post('/forum', [TopicController::class, 'store'])->name('forum.store');
     Route::post('/forum/{topic}/posts', [PostController::class, 'store'])->name('posts.store');
 });
@@ -65,6 +66,13 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/news/{news}/edit', [NewsController::class, 'edit'])->name('news.edit');
     Route::patch('/news/{news}', [NewsController::class, 'update'])->name('news.update');
     Route::delete('/news/{news}', [NewsController::class, 'destroy'])->name('news.destroy');
+
+    Route::get('/forum', [TopicController::class, 'adminIndex'])->name('forum.index');
+    Route::get('/forum/create', [TopicController::class, 'create'])->name('forum.create');
+    Route::post('/forum', [TopicController::class, 'store'])->name('forum.store');
+    Route::get('/forum/{topic}/edit', [TopicController::class, 'edit'])->name('forum.edit');
+    Route::patch('/forum/{topic}', [TopicController::class, 'update'])->name('forum.update');
+    Route::delete('/forum/{topic}', [TopicController::class, 'destroy'])->name('forum.destroy');
 
     Route::resource('faq-categories', FaqCategoryController::class)->except(['show']);
     Route::resource('faq-items', FaqItemController::class)->except(['show']);
