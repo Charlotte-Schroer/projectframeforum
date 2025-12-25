@@ -16,7 +16,7 @@ class NewsSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('news')->insert([
+        $newsItems = [
             [
                 'user_id' => 1,
                 'title' => 'New Sci-Fi Epic Breaks Box Office Records on Opening Weekend',
@@ -107,6 +107,13 @@ class NewsSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
-        ]);
+        ];
+
+        foreach ($newsItems as $newsItem) {
+            DB::table('news')->updateOrInsert(
+                ['title' => $newsItem['title']],
+                $newsItem
+            );
+        }
     }
 }
