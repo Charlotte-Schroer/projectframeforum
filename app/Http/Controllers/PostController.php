@@ -39,7 +39,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        if (Auth::id() !==$post->user_id && !Auth::user()->is_admin){
+        if (Auth::id() !== $post->user_id && !Auth::user()->is_admin) {
             abort(403, 'Unauthorized action.');
         }
 
@@ -50,7 +50,7 @@ class PostController extends Controller
             'content.min' => 'Content is minimum 3 characters',
         ]);
 
-        $post->update([$validated]);
+        $post->update($validated);
 
         return redirect()
             ->route('forum.show', $post->topic)
@@ -71,7 +71,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        if (Auth::id() !== $post->user_id && !Auth::user()->is_admin){
+        if (Auth::id() !== $post->user_id && !Auth::user()->is_admin) {
             abort(403, 'Unauthorized action.');
         }
 
@@ -84,7 +84,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        if (!Auth::user()->is_admin){
+        if (!Auth::user()->is_admin) {
             abort(403, 'Unauthorized action.');
         }
 
