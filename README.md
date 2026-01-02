@@ -131,10 +131,11 @@ Voor de database heb ik gebruik gemaakt van DBngin & TablePlus. De keuze hiervoo
 - **Gebruik van Tools**
 - ***Logo:*** Het logo van FrameForum is gecreëerd met de hulp van ChatGPT.
 [Logo FrameForum](https://chatgpt.com/share/692c2732-edf4-800e-8d79-5682cc09c7d5)
-- ***Versnelling van de Content-creatie:*** Om de website direct te voorzien van realistische data, is AI gebruikt voor het genereren van de initiële content in de `NewsSeeder.php`. Dit stelde mij in staat om de UI te testen met diverse scenario's (verschillende titellengtes, samenvattingen) zonder tijd te verliezen aan handmatige copy-writing.
+- ***Versnelling van de Content-creatie:*** Om de website direct te voorzien van realistische data, is AI gebruikt voor het genereren van de initiële content in de `NewsSeeder.php` en `UserSeeder.php`. Dit stelde mij in staat om de UI te testen met diverse scenario's (verschillende titellengtes, samenvattingen) zonder tijd te verliezen aan handmatige copy-writing.
 [NewsSeeder en Afbeeldingen via ChatGPT](https://chatgpt.com/share/694bd5d9-659c-800e-83eb-c79f8f2b5627)
+[UserSeeder](https://chatgpt.com/share/6957e637-50f4-800e-8640-5950e0dbb863)
 - ***Antigravity:***
-Gebruik van Antigravity als experiment: [Link naar aparte README.md in docsfolder](docs/README.md)
+Gebruik van Antigravity als experiment: [Link naar aparte README.md in docs](docs/README.md)
 - ***Favicon:***
 Gebruik van [Favicon Converter](https://favicon.io/favicon-converter/) om de favicon te genereren. How To: [Hoe ik het geïmplementeerd heb](https://codeboxr.com/how-to-create-and-integrate-a-favicon-in-your-laravel-project-and-wordpress-theme/)
 - ***Stackoverflow:***
