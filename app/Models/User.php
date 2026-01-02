@@ -56,17 +56,17 @@ class User extends Authenticatable
         ];
     }
 
-    public function news()
+    public function news(): HasMany
     {
         return $this->hasMany(News::class);
     }
 
-    public function topics()
+    public function topics(): HasMany
     {
         return $this->hasMany(Topic::class);
     }
 
-    public function posts()
+    public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
     }
