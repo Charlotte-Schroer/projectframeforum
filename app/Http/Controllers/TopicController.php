@@ -33,7 +33,7 @@ class TopicController extends Controller
         $topics = $query->paginate(12);
         $tags = Tag::orderBy('name', 'asc')->get();
 
-        return view('topics.index', compact('topics', 'tags'));
+        return view('forum.index', compact('topics', 'tags'));
     }
 
     /**
@@ -41,8 +41,8 @@ class TopicController extends Controller
      */
     public function create()
     {
-        $tags= Tag::orderBy('name', 'asc')->get();
-        return view('topics.create', compact('tags'));
+        $tags = Tag::orderBy('name', 'asc')->get();
+        return view('forum.create', compact('tags'));
     }
 
     /**
@@ -87,7 +87,7 @@ class TopicController extends Controller
     {
         $topic->load(['user', 'tags', 'posts.user']);
 
-        return view('topics.show', compact('topic'));
+        return view('forum.show', compact('topic'));
     }
 
     /**
@@ -95,12 +95,12 @@ class TopicController extends Controller
      */
     public function edit(Topic $topic)
     {
-        if (Auth::id() !== $topic->user_id && !Auth::user()->is_admin){
-            abort(403,"You are not allowed to edit this topic");
+        if (Auth::id() !== $topic->user_id && !Auth::user()->is_admin) {
+            abort(403, "You are not allowed to edit this topic");
         }
 
         $tags = Tag::orderBy('name', 'asc')->get();
-        return view('topics.edit', compact('topic', 'tags'));
+        return view('forum.edit', compact('topic', 'tags'));
     }
 
     /**
@@ -108,8 +108,8 @@ class TopicController extends Controller
      */
     public function update(Request $request, Topic $topic)
     {
-        if (Auth::id() !== $topic->user_id && !Auth::user()->is_admin){
-            abort(403,"You are not allowed to edit this topic");
+        if (Auth::id() !== $topic->user_id && !Auth::user()->is_admin) {
+            abort(403, "You are not allowed to edit this topic");
         }
 
         $validated = $request->validate([
@@ -148,8 +148,8 @@ class TopicController extends Controller
      */
     public function destroy(Topic $topic)
     {
-        if (!Auth::user()->is_admin){
-            abort(403,"Unauthorized action");
+        if (!Auth::user()->is_admin) {
+            abort(403, "Unauthorized action");
         }
 
         $topic->delete();
