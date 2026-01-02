@@ -1,35 +1,62 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
+use App\Models\Topic;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Store a newly created post (reply) in storage
      */
-    public function index()
+    public function store(Request $request, Topic $topic)
     {
-        //
+        $validated = $request->validate([
+            'content' => 'required|string|min:3',
+        ], [
+            'content.required' => 'Content is required',
+            'content.min' => 'Content is minimum 3 characters',
+        ]);
+
+        Post::create([
+            'topic_id' => $topic->id,
+            'user_id' => Auth::id(),
+            'content' => $validated['content'],
+        ]);
+
+        return redirect()
+            ->route('forum.show', $topic)
+            ->with('success', 'Post created successfully');
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Update specified post in storage.
      */
-    public function create()
+    public function update(Request $request, Post $post)
     {
-        //
+        if (Auth::id() !==$post->user_id && !Auth::user()->is_admin){
+            abort(403, 'Unauthorized action.');
+        }
+
+        $validated = $request->validate([
+            'content' => 'required|string|min:3',
+        ], [
+            'content.required' => 'Content is required',
+            'content.min' => 'Content is minimum 3 characters',
+        ]);
+
+        $post->update([$validated]);
+
+        return redirect()
+            ->route('forum.show', $post->topic)
+            ->with('success', 'Post updated successfully');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -44,22 +71,28 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        if (Auth::id() !== $post->user_id && !Auth::user()->is_admin){
+            abort(403, 'Unauthorized action.');
+        }
+
+        return view('forum.posts.edit', compact('post'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Post $post)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Post $post)
     {
-        //
+        if (!Auth::user()->is_admin){
+            abort(403, 'Unauthorized action.');
+        }
+
+        $topic = $post->topic;
+        $post->delete();
+
+        return redirect()
+            ->route('forum.show', $topic)
+            ->with('success', 'Post deleted successfully');
     }
 }
