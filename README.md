@@ -13,7 +13,7 @@ FrameForum is mijn project voor Backend Web. Het idee voor dit concrete onderwer
 - Forum topics bekijken
 - FAQ raadplegen
 - Gebruikersprofielen bekijken
-- Contactformulier gebruiken
+- Contactformulier gebruiken (Nieuw! 📩)
 
 **Voor geregistreerde gebruikers:**
 - Je eigen profiel aanmaken en personaliseren
@@ -26,11 +26,12 @@ FrameForum is mijn project voor Backend Web. Het idee voor dit concrete onderwer
 - FAQ items toevoegen
 - Contact berichten bekijken
 - Gebruikers admin rechten geven
+- Toegang tot het vernieuwde Admin Dashboard
 
 ## Installeren
 
 ### Je hebt nodig:
-- PHP 8.1+
+- PHP 8.2+
 - MySQL
 - Composer
 - Node.js
@@ -65,13 +66,13 @@ Surf naar `http://localhost:8000`
 
 ## Inloggen
 
-Na de installatie kan je inloggen met:
+Na de installatie kan je inloggen met de standaard admin account:
 - Email: `admin@ehb.be`
 - Wachtwoord: `Password!321`
 
 ## Tech stack
 
-- Laravel 12.40.1
+- Laravel 12.x
 - MySQL database
 - Tailwind CSS voor styling
 - Laravel Breeze voor authenticatie
@@ -85,8 +86,8 @@ De belangrijkste tabellen:
 - Users met admin functionaliteit
 - News voor artikelen
 - Topics en Posts voor het forum
-- Tags voor filmgenres (many-to-many met topics)
-- FAQ Categories en Items
+- Tags voor filmgenres (**Many-to-Many** relatie met topics)
+- FAQ Categories en Items (One-to-Many relatie)
 - Contact Messages
 
 ## Features checklist
@@ -96,14 +97,14 @@ De belangrijkste tabellen:
 - [x] Admin en user rollen
 - [x] Profielpagina's
 - [x] Nieuws CRUD
-- [x] FAQ pagina
-- [x] Contact formulier met email
+- [x] FAQ pagina (gecategoriseerd)
+- [x] Contact formulier (stuurt email naar admin@ehb.be)
 
 **Extra's:**
 - [x] Forum met topics en replies
-- [x] Tags systeem
+- [x] Tags systeem (Many-to-Many)
 - [x] Dark mode
-- [x] Admin dashboard
+- [x] Professioneel Admin Dashboard
 
 ## Credits & Bronvermelding
 
@@ -112,21 +113,25 @@ De belangrijkste tabellen:
 **Student:** Charlotte Schröer  
 **Academiejaar:** 2025-2026
 **Vak:** Backend Web
+
 #### PHPStorm vs. Antigravity AI
-Ik heb hoofdzakelijk alles ontwikkeld in PHPStorm. Echter af en toe heb ik geëxperimenteerd met Antigravity. 
+Ik heb hoofdzakelijk alles ontwikkeld in PHPStorm. Ik heb hoofdzakelijk alles ontwikkeld in PHPStorm. Echter af en toe heb ik geëxperimenteerd met Antigravity. 
+
 De logs hiervan zijn vermeld in deze README.md met de afbeeldingen aangezien de Antigravity AI geen exportfunctie heeft.
+
 #### Database
 Voor de database heb ik gebruik gemaakt van DBngin & TablePlus. De keuze hiervoor lag voor de hand aangezien de informatie hiervoor beschikbaar was via de cursusinformatie van het vak Backend Web. 
 
-
 ### Documentatie
 
-- [Laravel Documentation](https://laravel.com/docs) - Framework documentatie & Blade templating
+[Laravel Documentation](https://laravel.com/docs) - Framework documentatie & Blade templating
 - [Laravel Breeze Documentation](https://laravel.com/docs/starter-kits/breeze) - Authenticatie
 - [Laravel Breeze Installation](https://medium.com/@thoyibh07/laravel-breeze-the-ultimate-guide-to-authentication-cb7e8a7e3277)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs) - Styling
 - [Alpine.js Documentation](https://alpinejs.dev/) voor Light & Dark Mode Toggle
 - [Light & Dark Mode Toggle Tutorial](https://www.youtube.com/watch?v=NvoYr7eQ2Xo)
+- [Eloquent Factories voor Seeders](https://laravel.com/docs/12.x/eloquent-factories)
+- [Favicon](https://favicon.io/favicon-converter/)
 - Cursusmateriaal Backend Web - EHB 2025-2026
 - **Gebruik van Tools**
 - ***Logo:*** Het logo van FrameForum is gecreëerd met de hulp van ChatGPT.
@@ -150,13 +155,6 @@ De afbeeldingen die bij de NewsSeeder horen staan gelinkt in de directory `stora
 
 
 ## To-do
-
-Als ik meer tijd had zou ik nog graag toevoegen:
-- 
-
-
-
-
 
 ---
 
