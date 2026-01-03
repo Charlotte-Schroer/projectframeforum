@@ -48,8 +48,12 @@ Route::middleware('auth')->group(function () {
     // Forum - authenticated
     Route::get('/forum/create', [TopicController::class, 'create'])->name('forum.create');
     Route::get('/forum/{topic}/edit', [TopicController::class, 'edit'])->name('forum.edit');
+    Route::patch('/forum/{topic}', [TopicController::class, 'update'])->name('forum.update');
     Route::post('/forum', [TopicController::class, 'store'])->name('forum.store');
     Route::post('/forum/{topic}/posts', [PostController::class, 'store'])->name('posts.store');
+    Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
+    Route::patch('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
+    Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 });
 
 // Admin routes
