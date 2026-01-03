@@ -16,40 +16,50 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
                         <a href="{{ route('admin.news.index') }}"
-                            class="block p-6 bg-indigo-50 dark:bg-indigo-900 rounded-lg hover:bg-indigo-100 dark:hover:bg-indigo-800 transition">
-                            <h4 class="font-bold text-lg mb-2">📰 Manage News</h4>
+                            class="block p-6 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-md transition duration-200 group">
+                            <h4
+                                class="font-bold text-lg mb-2 text-gray-900 dark:text-gray-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                                📰 Manage News</h4>
                             <p class="text-sm text-gray-600 dark:text-gray-300">Create, edit or delete news items</p>
                         </a>
 
                         <a href="{{ route('admin.users.index') }}"
-                            class="block p-6 bg-blue-50 dark:bg-blue-900 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-800 transition">
-                            <h4 class="font-bold text-lg mb-2">👥 Manage Users</h4>
+                            class="block p-6 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-md transition duration-200 group">
+                            <h4
+                                class="font-bold text-lg mb-2 text-gray-900 dark:text-gray-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                                👥 Manage Users</h4>
                             <p class="text-sm text-gray-600 dark:text-gray-300">Grant or revoke admin rights</p>
                         </a>
 
                         <a href="{{ route('admin.faq-categories.index') }}"
-                            class="block p-6 bg-purple-50 dark:bg-purple-900 rounded-lg hover:bg-purple-100 dark:hover:bg-purple-800 transition">
-                            <h4 class="font-bold text-lg mb-2">❓ Manage FAQ</h4>
+                            class="block p-6 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-md transition duration-200 group">
+                            <h4
+                                class="font-bold text-lg mb-2 text-gray-900 dark:text-gray-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                                ❓ Manage FAQ</h4>
                             <p class="text-sm text-gray-600 dark:text-gray-300">Manage FAQ categories and items</p>
                         </a>
 
                         <a href="{{ route('admin.forum.index') }}"
-                            class="block p-6 bg-pink-50 dark:bg-pink-900 rounded-lg hover:bg-pink-100 dark:hover:bg-pink-800 transition">
-                            <h4 class="font-bold text-lg mb-2">💬 Manage Forum</h4>
+                            class="block p-6 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-md transition duration-200 group">
+                            <h4
+                                class="font-bold text-lg mb-2 text-gray-900 dark:text-gray-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                                💬 Manage Forum</h4>
                             <p class="text-sm text-gray-600 dark:text-gray-300">Manage forum topics and delete
                                 inappropriate content</p>
                         </a>
 
                         <a href="{{ url('/') }}"
-                            class="block p-6 bg-green-50 dark:bg-green-900 rounded-lg hover:bg-green-100 dark:hover:bg-green-800 transition">
-                            <h4 class="font-bold text-lg mb-2">🌐 Go to website</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">View public site</p>
+                            class="block p-6 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800 rounded-lg hover:bg-emerald-100 dark:hover:bg-emerald-900/40 transition duration-200">
+                            <h4 class="font-bold text-lg mb-2 text-emerald-800 dark:text-emerald-300">🌐 Go to website
+                            </h4>
+                            <p class="text-sm text-emerald-600 dark:text-emerald-400">View public site</p>
                         </a>
 
                         <a href="{{ route('news.index') }}"
-                            class="block p-6 bg-yellow-50 dark:bg-yellow-900 rounded-lg hover:bg-yellow-100 dark:hover:bg-yellow-800 transition">
-                            <h4 class="font-bold text-lg mb-2">👀 Preview News</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">View news items like users do</p>
+                            class="block p-6 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800 rounded-lg hover:bg-emerald-100 dark:hover:bg-emerald-900/40 transition duration-200">
+                            <h4 class="font-bold text-lg mb-2 text-emerald-800 dark:text-emerald-300">👀 Preview News
+                            </h4>
+                            <p class="text-sm text-emerald-600 dark:text-emerald-400">View news items like users do</p>
                         </a>
                     </div>
                 </div>
