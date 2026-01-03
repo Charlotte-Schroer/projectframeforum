@@ -152,14 +152,44 @@
                         @if($user->topics()->count() > 5)
                             <a href="{{ route('forum.index') }}"
                                 class="block mt-4 text-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 text-sm font-medium">
-                                View all topic →
+                                View all topics →
                             </a>
                         @endif
                     </div>
                 @endif
 
+                <!-- Forum Replies -->
+                @if($posts->isNotEmpty())
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+                        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
+                                </path>
+                            </svg>
+                            Recent Replies
+                        </h2>
+                        <div class="space-y-3">
+                            @foreach($posts as $post)
+                                <a href="{{ route('forum.show', $post->topic) }}#post-{{ $post->id }}"
+                                    class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition">
+                                    <p class="text-sm text-gray-900 dark:text-white line-clamp-2 mb-1 italic">
+                                        "{{ $post->content }}"
+                                    </p>
+                                    <p class="text-xs text-indigo-600 dark:text-indigo-400 font-medium">
+                                        in: {{ $post->topic->title }}
+                                    </p>
+                                    <p class="text-[10px] text-gray-500 dark:text-gray-400 mt-1">
+                                        {{ $post->created_at->diffForHumans() }}
+                                    </p>
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+
                 <!-- Empty State -->
-                @if($news->isEmpty() && $topics->isEmpty())
+                @if($news->isEmpty() && $topics->isEmpty() && $posts->isEmpty())
                     <div class="lg:col-span-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm p-12 text-center">
                         <div class="text-6xl mb-4">👤</div>
                         <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
