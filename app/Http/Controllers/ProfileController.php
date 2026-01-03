@@ -24,7 +24,7 @@ class ProfileController extends Controller
         $search = $request->input('search');
 
         $users = User::when($search, function ($query, $search) {
-            $query->where(function($q)use($search){
+            $query->where(function ($q) use ($search) {
                 $q->where('name', 'like', '%' . $search . '%')
                     ->orWhere('email', 'like', '%' . $search . '%')
                     ->orWhere('username', 'like', '%' . $search . '%');
@@ -55,7 +55,14 @@ class ProfileController extends Controller
             ->take(6)
             ->get();
 
-        return view('profile.show', compact('user', 'news', 'topics'));
+        // Get user's forum posts (replies)
+        $posts = $user->posts()
+            ->with('topic')
+            ->orderBy('created_at', 'desc')
+            ->take(6)
+            ->get();
+
+        return view('profile.show', compact('user', 'news', 'topics', 'posts'));
     }
 
     /**

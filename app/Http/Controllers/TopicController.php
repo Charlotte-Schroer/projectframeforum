@@ -37,6 +37,19 @@ class TopicController extends Controller
     }
 
     /**
+     * Display a listing of topics for admin management.
+     */
+    public function adminIndex()
+    {
+        $topics = Topic::with(['user', 'tags', 'posts'])
+            ->withCount('posts')
+            ->orderBy('created_at', 'desc')
+            ->paginate(20);
+
+        return view('admin.forum.index', compact('topics'));
+    }
+
+    /**
      * Show the form for creating a new topic.
      */
     public function create()
