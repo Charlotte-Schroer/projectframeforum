@@ -2,17 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FaqCategory;
 use App\Models\FaqItem;
 use Illuminate\Http\Request;
 
 class FaqItemController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource (Public).
+     */
+    public function publicIndex()
+    {
+        $categories = FaqCategory::with('items')->get();
+        return view('faq.index', compact('categories'));
+    }
+
+    /**
+     * Display a listing of the resource (Admin).
      */
     public function index()
     {
-        //
+        $items = FaqItem::with('category')->paginate(15);
+        return view('admin.faq-items.index', compact('items'));
     }
 
     /**
@@ -20,7 +31,8 @@ class FaqItemController extends Controller
      */
     public function create()
     {
-        //
+        $categories = FaqCategory::all();
+        return view('admin.faq-items.create', compact('categories'));
     }
 
     /**
@@ -28,15 +40,16 @@ class FaqItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'faq_category_id' => 'required|exists:faq_categories,id',
+            'question' => 'required|string|max:255',
+            'answer' => 'required|string',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(FaqItem $faqItem)
-    {
-        //
+        FaqItem::create($request->all());
+
+        return redirect()->route('admin.faq-items.index')
+            ->with('success', 'FAQ Item created successfully.');
     }
 
     /**
@@ -44,7 +57,8 @@ class FaqItemController extends Controller
      */
     public function edit(FaqItem $faqItem)
     {
-        //
+        $categories = FaqCategory::all();
+        return view('admin.faq-items.edit', compact('faqItem', 'categories'));
     }
 
     /**
@@ -52,7 +66,16 @@ class FaqItemController extends Controller
      */
     public function update(Request $request, FaqItem $faqItem)
     {
-        //
+        $request->validate([
+            'faq_category_id' => 'required|exists:faq_categories,id',
+            'question' => 'required|string|max:255',
+            'answer' => 'required|string',
+        ]);
+
+        $faqItem->update($request->all());
+
+        return redirect()->route('admin.faq-items.index')
+            ->with('success', 'FAQ Item updated successfully.');
     }
 
     /**
@@ -60,6 +83,9 @@ class FaqItemController extends Controller
      */
     public function destroy(FaqItem $faqItem)
     {
-        //
+        $faqItem->delete();
+
+        return redirect()->route('admin.faq-items.index')
+            ->with('success', 'FAQ Item deleted successfully.');
     }
 }

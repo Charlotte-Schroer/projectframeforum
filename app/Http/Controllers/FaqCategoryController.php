@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Models\FaqCategory;
@@ -12,7 +14,8 @@ class FaqCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = FaqCategory::withCount('items')->get();
+        return view('admin.faq-categories.index', compact('categories'));
     }
 
     /**
@@ -20,7 +23,7 @@ class FaqCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.faq-categories.create');
     }
 
     /**
@@ -28,15 +31,14 @@ class FaqCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(FaqCategory $faqCategory)
-    {
-        //
+        FaqCategory::create($request->all());
+
+        return redirect()->route('admin.faq-categories.index')
+            ->with('success', 'Category created successfully.');
     }
 
     /**
@@ -44,7 +46,7 @@ class FaqCategoryController extends Controller
      */
     public function edit(FaqCategory $faqCategory)
     {
-        //
+        return view('admin.faq-categories.edit', compact('faqCategory'));
     }
 
     /**
@@ -52,7 +54,14 @@ class FaqCategoryController extends Controller
      */
     public function update(Request $request, FaqCategory $faqCategory)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $faqCategory->update($request->all());
+
+        return redirect()->route('admin.faq-categories.index')
+            ->with('success', 'Category updated successfully.');
     }
 
     /**
@@ -60,6 +69,9 @@ class FaqCategoryController extends Controller
      */
     public function destroy(FaqCategory $faqCategory)
     {
-        //
+        $faqCategory->delete();
+
+        return redirect()->route('admin.faq-categories.index')
+            ->with('success', 'Category deleted successfully.');
     }
 }

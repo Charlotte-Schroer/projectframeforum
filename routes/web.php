@@ -27,7 +27,7 @@ Route::get('/dashboard', function () {
 // Public routes
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 Route::get('/news/{news}', [NewsController::class, 'show'])->name('news.show');
-Route::get('/faq', [FaqItemController::class, 'index'])->name('faq.index');
+Route::get('/faq', [FaqItemController::class, 'publicIndex'])->name('faq.index');
 Route::get('/contact', [ContactMessageController::class, 'create'])->name('contact.create');
 Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');
 
