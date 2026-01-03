@@ -21,6 +21,12 @@
                             <p class="text-sm text-gray-600 dark:text-gray-300">Create, edit or delete news items</p>
                         </a>
 
+                        <a href="{{ route('admin.users.index') }}"
+                            class="block p-6 bg-blue-50 dark:bg-blue-900 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-800 transition">
+                            <h4 class="font-bold text-lg mb-2">👥 Manage Users</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Grant or revoke admin rights</p>
+                        </a>
+
                         <a href="{{ route('admin.faq-categories.index') }}"
                             class="block p-6 bg-purple-50 dark:bg-purple-900 rounded-lg hover:bg-purple-100 dark:hover:bg-purple-800 transition">
                             <h4 class="font-bold text-lg mb-2">❓ Manage FAQ</h4>

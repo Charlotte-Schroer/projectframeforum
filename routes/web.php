@@ -84,6 +84,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/contact-messages', [ContactMessageController::class, 'index'])->name('contact.index');
     Route::get('/contact-messages/{contactMessage}', [ContactMessageController::class, 'show'])->name('contact.show');
     Route::delete('/contact-messages/{contactMessage}', [ContactMessageController::class, 'destroy'])->name('contact.destroy');
+
+    // User Management
+    Route::get('/users', [App\Http\Controllers\AdminUserController::class, 'index'])->name('users.index');
+    Route::patch('/users/{user}/toggle-admin', [App\Http\Controllers\AdminUserController::class, 'toggleAdmin'])->name('users.toggle-admin');
 });
 
 require __DIR__ . '/auth.php';
