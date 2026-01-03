@@ -87,6 +87,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
     // User Management
     Route::get('/users', [App\Http\Controllers\AdminUserController::class, 'index'])->name('users.index');
+    Route::get('/users/create', [App\Http\Controllers\AdminUserController::class, 'create'])->name('users.create');
+    Route::post('/users', [App\Http\Controllers\AdminUserController::class, 'store'])->name('users.store');
     Route::patch('/users/{user}/toggle-admin', [App\Http\Controllers\AdminUserController::class, 'toggleAdmin'])->name('users.toggle-admin');
 });
 
