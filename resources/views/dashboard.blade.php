@@ -153,7 +153,7 @@
                         <div class="mb-4">
                             <div class="flex justify-between text-sm mb-2">
                                 <span class="text-gray-600 dark:text-gray-400">{{ $completion }}/{{ $total }}
-                                    voltooid</span>
+                                    completed</span>
                                 <span
                                     class="font-semibold text-gray-900 dark:text-white">{{ round($percentage) }}%</span>
                             </div>
