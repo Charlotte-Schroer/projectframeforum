@@ -11,7 +11,7 @@
                         {{ __('Edit') }}
                     </a>
                 @endif
-                @if(Auth::user()->is_admin)
+                @if(Auth::check() && Auth::user()->is_admin)
                     <form action="{{ route('admin.forum.destroy', $topic) }}" method="POST"
                         onsubmit="return confirm('Are you sure you want to delete this topic?');">
                         @csrf
@@ -103,11 +103,11 @@
                             </div>
 
                             <div class="flex gap-2">
-                                @if(Auth::id() === $post->user_id || Auth::user()->is_admin)
+                                @if(Auth::check() && (Auth::id() === $post->user_id || Auth::user()->is_admin))
                                     <a href="{{ route('posts.edit', $post) }}"
                                         class="text-xs text-indigo-600 dark:text-indigo-400 hover:underline">Edit</a>
                                 @endif
-                                @if(Auth::user()->is_admin)
+                                @if(Auth::check() && Auth::user()->is_admin)
                                     <form action="{{ route('posts.destroy', $post) }}" method="POST"
                                         onsubmit="return confirm('Are you sure you want to delete this reply?');">
                                         @csrf
