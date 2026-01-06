@@ -147,15 +147,6 @@ Gebruik van [Favicon Converter](https://favicon.io/favicon-converter/) om de fav
 - ***Stackoverflow:***
 De afbeeldingen die bij de NewsSeeder horen staan gelinkt in de directory `storage\public`. Ik wil deze beschikbaar maken met Seed en had hierbij hulp nodig om de commits hiervoor uit te voeren: [Stackoverflow](https://stackoverflow.com/questions/63485502/storage-folder-not-getting-commited-into-github-in-laravel-project)
 
-### Leerproces
-
-
-
-
-
-
-## To-do
-
 ---
 
 Gemaakt als schoolproject voor Erasmushogeschool Brussel
