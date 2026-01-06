@@ -115,9 +115,10 @@ De belangrijkste tabellen:
 **Vak:** Backend Web
 
 #### PHPStorm vs. Antigravity AI
-Ik heb hoofdzakelijk alles ontwikkeld in PHPStorm. Ik heb hoofdzakelijk alles ontwikkeld in PHPStorm. Echter af en toe heb ik geëxperimenteerd met Antigravity. 
+Ik heb hoofdzakelijk alles ontwikkeld in PHPStorm. Echter af en toe heb ik geëxperimenteerd met Antigravity. 
 
 De logs hiervan zijn vermeld in deze README.md met de afbeeldingen aangezien de Antigravity AI geen exportfunctie heeft.
+Alle code is door mezelf beoordeeld en geëvalueerd voor implementatie. 
 
 #### Database
 Voor de database heb ik gebruik gemaakt van DBngin & TablePlus. De keuze hiervoor lag voor de hand aangezien de informatie hiervoor beschikbaar was via de cursusinformatie van het vak Backend Web. 
