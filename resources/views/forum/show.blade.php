@@ -5,7 +5,7 @@
                 {{ $topic->title }}
             </h2>
             <div class="flex shrink-0 gap-2">
-                @if(Auth::id() === $topic->user_id || Auth::user()->is_admin)
+                @if(Auth::check() && Auth::id() === $topic->user_id || Auth::user()->is_admin)
                     <a href="{{ route('forum.edit', $topic) }}"
                         class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150">
                         {{ __('Edit') }}
