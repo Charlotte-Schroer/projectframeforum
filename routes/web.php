@@ -37,7 +37,6 @@ Route::get('/profile/{username}', [ProfileController::class, 'show'])->name('pro
 
 // Forum - public
 Route::get('/forum', [TopicController::class, 'index'])->name('forum.index');
-Route::get('/forum/{topic}', [TopicController::class, 'show'])->name('forum.show');
 
 // Authenticated routes
 Route::middleware('auth')->group(function () {
@@ -55,6 +54,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
     Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 });
+
+Route::get('/forum/{topic}', [TopicController::class, 'show'])->name('forum.show');
 
 // Admin routes
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
